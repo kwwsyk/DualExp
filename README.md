@@ -1,3 +1,16 @@
+# DuelExp: Split XP roles: level vs currency
+
+DualExp is a Minecraft mod that separates the traditional XP system into two distinct roles: Level, used for gating access to features like enchanting, and Currency, used for spending experience on actions.
+This decoupling allows more precise control over progression mechanics and paves the way for modpacks or datapacks to define their own experience usage models.
+
+By default, XP orbs contribute to both roles simultaneously, but mod developers and pack creators can fully customize how experience is earned, stored, and consumed. DualExp provides a lightweight yet extensible API for accessing, syncing, and manipulating both XP roles independently.
+
+Ideal for RPG systems, custom economies, or any mod that wants to treat XP as more than just a single pool.
+
+*Still updating*
+
+Only 1.21.1 Neoforge is available.
+
 # MultiLoader Template
 
 This project provides a Gradle project template that can compile Minecraft mods for multiple modloaders using a common project for the sources. This project does not require any third party libraries or dependencies. If you have any questions or want to discuss the project, please join our [Discord](https://discord.myceliummod.network).

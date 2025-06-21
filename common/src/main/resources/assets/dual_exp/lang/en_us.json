@@ -1,0 +1,8 @@
+{
+  "dualexp.command.deprecated.xp": "%sXP commands may not run as expected as vanilla player xp logic is changed, use %s for level exp or %s for currency instead.",
+  "dualexp.command.rune.add.success.single": "Added %s %s for %s.",
+  "dualexp.command.rune.add.success.multiple": "Added %s %s for %s targets.",
+  "dualexp.command.rune.set.success.single": "Set %s's %s to %s.",
+  "dualexp.command.rune.set.success.multiple": "Set %s targets' %s to %s.",
+  "dualexp.command.rune.get": "%s's %s amount is %s."
+}
