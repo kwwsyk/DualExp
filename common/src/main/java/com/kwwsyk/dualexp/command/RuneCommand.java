@@ -1,6 +1,5 @@
 package com.kwwsyk.dualexp.command;
 
-import com.kwwsyk.dualexp.Constants;
 import com.kwwsyk.dualexp.Runtime;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -12,11 +11,13 @@ import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Collection;
 
+import static com.kwwsyk.dualexp.Runtime.STARTUP_CONFIG;
+
 public class RuneCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
-                Commands.literal(Constants.RUNE_COMMAND)
+                Commands.literal(STARTUP_CONFIG.getCurrencyCmdName())
                         .requires(source->source.hasPermission(2))
                         .then(
                                 Commands.literal("add")
@@ -68,7 +69,7 @@ public class RuneCommand {
 
     private static int getRune(CommandSourceStack source, ServerPlayer player) {
         int i = Runtime.runeAttachment.getRune(player);
-        source.sendSuccess(() -> Component.translatable("dualexp.command.rune.get", player.getDisplayName(),  Constants.CURRENCY, i), false);
+        source.sendSuccess(() -> Component.translatable("dualexp.command.rune.get", player.getDisplayName(),  STARTUP_CONFIG.getCurrencyName(), i), false);
         return i;
     }
 
@@ -80,13 +81,13 @@ public class RuneCommand {
         if (targets.size() == 1) {
             source.sendSuccess(
                     () -> Component.translatable(
-                            "dualexp.command.rune.set.success.single", targets.iterator().next().getDisplayName(), Constants.CURRENCY, amount
+                            "dualexp.command.rune.set.success.single", targets.iterator().next().getDisplayName(), STARTUP_CONFIG.getCurrencyName(), amount
                     ),
                     true
             );
         } else {
             source.sendSuccess(
-                    () -> Component.translatable("dualexp.command.rune.set.success.multiple", targets.size(), Constants.CURRENCY, amount), true
+                    () -> Component.translatable("dualexp.command.rune.set.success.multiple", targets.size(), STARTUP_CONFIG.getCurrencyName(), amount), true
             );
         }
 
@@ -101,13 +102,13 @@ public class RuneCommand {
         if (targets.size() == 1) {
             source.sendSuccess(
                     () -> Component.translatable(
-                            "dualexp.command.rune.add.success.single", amount, Constants.CURRENCY, targets.iterator().next().getDisplayName()
+                            "dualexp.command.rune.add.success.single", amount, STARTUP_CONFIG.getCurrencyName(), targets.iterator().next().getDisplayName()
                     ),
                     true
             );
         } else {
             source.sendSuccess(
-                    () -> Component.translatable("dualexp.command.rune.add.success.multiple", amount, Constants.CURRENCY, targets.size()), true
+                    () -> Component.translatable("dualexp.command.rune.add.success.multiple", amount, STARTUP_CONFIG.getCurrencyName(), targets.size()), true
             );
         }
 

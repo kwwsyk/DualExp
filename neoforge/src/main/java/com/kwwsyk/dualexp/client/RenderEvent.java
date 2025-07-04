@@ -2,6 +2,7 @@ package com.kwwsyk.dualexp.client;
 
 import com.kwwsyk.dualexp.Constants;
 import com.kwwsyk.dualexp.DualExpMod;
+import com.kwwsyk.dualexp.Runtime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.neoforged.api.distmarker.Dist;
@@ -13,6 +14,7 @@ import net.neoforged.neoforge.client.event.RenderGuiEvent;
 public class RenderEvent {
     @SubscribeEvent
     public static void renderRune(RenderGuiEvent.Post event){
+        if(!Runtime.CLIENT_CONFIG.renderRuneCount()) return;
         Minecraft mc = Minecraft.getInstance();
         if(mc.player==null) return;
         if(!mc.options.hideGui&&!mc.player.isSpectator()) {

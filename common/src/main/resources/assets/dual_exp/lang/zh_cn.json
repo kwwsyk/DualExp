@@ -1,0 +1,10 @@
+{
+  "dualexp.deprecated.xp": "%sXP指令不会如预期发生作用，因为XP获取逻辑被接管, 使用%s以用于等级的Xp或%s用于花费作用的Xp（rune）",
+  "dualexp.command.rune.add.success.single": "增加了 %s %s 为 %s.",
+  "dualexp.command.rune.add.success.multiple": "增加了 %s %s 为 %s 个目标.",
+  "dualexp.command.rune.set.success.single": "设置 %s的 %s 到 %s.",
+  "dualexp.command.rune.set.success.multiple": "设置了 %s 个目标的 %s 到 %s.",
+  "dualexp.command.rune.get": "%s的 %s 的数量为 %s.",
+  "dualexp.deprecated.aff": "不再显示",
+  "dualexp.hoveringtxt.disable_mention": "通过配置文件以禁用此提示"
+}

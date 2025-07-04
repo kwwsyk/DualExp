@@ -30,4 +30,11 @@ public class RuneEvent {
     public void setRune(int rune){
         this.rune = rune;
     }
+
+    public static class Give extends RuneEvent{
+
+        public Give(Player player, int originalRune) {
+            super(player, originalRune);
+        }
+    }
 }

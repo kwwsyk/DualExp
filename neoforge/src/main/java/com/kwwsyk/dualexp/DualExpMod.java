@@ -1,14 +1,20 @@
 package com.kwwsyk.dualexp;
 
 
+import com.kwwsyk.dualexp.client.ClientConfig;
 import com.kwwsyk.dualexp.network.PlayerRune;
 import com.mojang.serialization.Codec;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -32,7 +38,7 @@ public class DualExpMod {
 
     private static boolean tickRefresh = true;
 
-    public DualExpMod(IEventBus eventBus) {
+    public DualExpMod(IEventBus eventBus, ModContainer container) {
 
         // This method is invoked by the NeoForge mod loader when it is ready
         // to load your mod. You can access NeoForge and Common code in this
@@ -77,6 +83,16 @@ public class DualExpMod {
             final PayloadRegistrar registrar = event.registrar("1");
             registrar.playToClient(PlayerRune.TYPE, PlayerRune.STREAM_CODEC, (pkt,cxt)->pkt.handle(convert(cxt)));
         });
+
+        if(FMLEnvironment.dist.isClient()){
+            container.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CONFIG_SPEC);
+        }
+        Runtime.CLIENT_CONFIG = ClientConfig.CLIENT_CONFIG.NEO_IMPLEMENTATION;
+
+        container.registerConfig(ModConfig.Type.STARTUP, StartupConfig.CONFIG_SPEC);
+        Runtime.STARTUP_CONFIG = StartupConfig.STARTUP_CONFIG.NEO_IMPLEMENTATION;
+
+        container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     private static com.kwwsyk.dualexp.network.IPayloadContext convert(IPayloadContext context){

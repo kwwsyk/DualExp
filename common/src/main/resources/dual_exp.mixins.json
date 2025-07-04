@@ -10,7 +10,9 @@
     "RewardMixin"
   ],
   "client": [
-    "CommandSuggestionsMixin"
+    "CommandSuggestionsMixin",
+    "SuggestionListMixin",
+    "SuggestionAccessor"
   ],
   "server": [],
   "injectors": {
